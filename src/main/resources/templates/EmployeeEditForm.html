@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns:th = "https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Edit Form</title>
+</head>
+<body>
+
+<th:block th:insert = "Header.html"> </th:block>
+
+	<div class = "container-fluid">
+			
+			<div class = "card">
+				<div class ="card-header bg-primary text-center text-white"><h5>Employee Edit Form</h5></div>
+				
+				
+				<div class ="card-body">
+				
+				<form action = "/emp/update" method = "post" th:object = "${eModel}">
+				
+					<div class= "row p-2">
+						<div class = "col-4">First Name</div>
+						<div class = "col-6">
+							<input type = "text" th:field = "*{fname}" class = "form-control"><!-- POJO sanga milnu paryo dpt_name -->	
+						</div>
+					</div>
+				
+					<div class= "row p-2">
+						<div class = "col-4">Last Name</div>
+						<div class = "col-6">
+							<input type = "text" th:field = "*{lname}" class = "form-control"><!-- POJO sanga milnu paryo dpt_name -->	
+						</div>
+					</div>
+				
+					<div class="row p-2">
+					    <div class="col-4">Gender</div>
+					    <div class="col-6">
+					        <div class="form-check">
+					            <input type="radio" id="male" th:field ="*{gender}" value="Male" class="form-check-input">
+					            <label for="male" class="form-check-label">Male</label>
+					        </div>
+					        <div class="form-check">
+					            <input type="radio" id="female" th:field ="*{gender}" value="Female" class="form-check-input">
+					            <label for="female" class="form-check-label">Female</label>
+					        </div>
+					    </div>
+					</div>
+				
+				
+					<div class= "row p-2">
+						<div class = "col-4">Phone no</div>
+						<div class = "col-6">
+							<input type = "text" th:field = "*{phone}" class = "form-control"><!-- POJO sanga milnu paryo dpt_name -->	
+						</div>
+					</div>
+					
+					<div class= "row p-2">
+						<div class = "col-4">DoB</div>
+						<div class = "col-6">
+							<input type = "date" th:field = "*{dob}" class = "form-control"><!-- POJO sanga milnu paryo dpt_name -->	
+						</div>
+					</div>
+					
+					<div class= "row p-2">
+						<div class = "col-4">Email</div>
+						<div class = "col-6">
+							<input type = "text" th:field = "*{email}" class = "form-control"><!-- POJO sanga milnu paryo dpt_name -->	
+						</div>
+					</div>
+					
+					<div class= "row p-2">
+						<div class = "col-4">Company</div>
+						<div class = "col-6">
+							<input type = "text" th:field = "*{company}" class = "form-control"><!-- POJO sanga milnu paryo dpt_name -->	
+						</div>
+					</div>
+					
+					<div class= "row p-2">
+						<div class = "col-4">Employee Post</div>
+						<div class = "col-6">
+							<input type = "text" th:field = "*{post}" class = "form-control"><!-- POJO sanga milnu paryo dpt_name -->	
+						</div>
+					</div>
+					
+					
+					<div class= "row p-2">
+						<div class = "col-4">Salary</div>
+						<div class = "col-6">
+							<input type = "number" th:field = "*{salary}" class = "form-control"><!-- POJO sanga milnu paryo dpt_name -->	
+						</div>
+					</div>
+					
+					
+					<div class= "row p-2">
+						<div class = "col-4">Joined Date</div>
+						<div class = "col-6">
+							<input type = "date" th:field = "*{joinDate}" class = "form-control"><!-- POJO sanga milnu paryo dpt_name -->	
+						</div>
+					</div>
+					
+					<div class= "row p-2">
+						<div class = "col-4">Country</div>
+						<div class = "col-6">
+							<input type = "text" th:field = "*{address.country}" class = "form-control"><!-- POJO sanga milnu paryo dpt_name -->	
+						</div>
+					</div>
+					
+					<div class= "row p-2">
+						<div class = "col-4">city</div>
+						<div class = "col-6">
+							<input type = "text" th:field = "*{address.city}" class = "form-control"><!-- POJO sanga milnu paryo dpt_name -->	
+						</div>
+					</div>
+					
+					<div class= "row p-2">
+						<div class = "col-4">State</div>
+						<div class = "col-6">
+							
+							<select th:field = "*{address.state}" class = "form-control">
+								<option value = "">select</option>
+								<option value = "state-1">state-1</option>
+								<option value = "state-2">state-2</option>
+								<option value = "state-3">state-3</option>
+								<option value = "state-4">state-4</option>
+								<option value = "state-5">state-5</option>
+								<option value = "state-6">state-6</option>
+								<option value = "state-7">state-7</option>
+							
+							</select>	<!-- POJO sanga milnu paryo dpt_name -->	
+						</div>
+					</div>
+					
+					<div class= "row p-2">
+						<div class = "col-4">Zip Code</div>
+						<div class = "col-6">
+							<input type = "text" th:field = "*{address.zipcode}" class = "form-control"><!-- POJO sanga milnu paryo dpt_name -->	
+						</div>
+					</div>
+					
+					<div class= "row p-2">
+						<div class = "col-4">Department</div>
+						<div class = "col-6">
+							
+							<select th:field = "*{department}" class = "form-control">
+								<option value = "">Select</option>
+								<option th:each = "d:${dList}" th:value= ${d.id}>[[${d.dpt_name}]]</option>
+							
+							</select>	
+						</div>
+					</div>
+					
+					
+					<div class= "row p-2">
+						<div class = "col-4">Projects</div>
+						<div class = "col-6">
+							<input type = "checkbox" th:field = "*{projects}" value = "project-1"> Project-1<!-- POJO sanga milnu paryo dpt_name -->	
+							<input type = "checkbox" th:field = "*{projects}" value = "project-2"> Project-2
+							<input type = "checkbox" th:field = "*{projects}" value = "project-3"> Project-3
+							<input type = "checkbox" th:field = "*{projects}" value = "project-4"> Project-4
+							<input type = "checkbox" th:field = "*{projects}" value = "project-5"> Project-5
+							<input type = "checkbox" th:field = "*{projects}" value = "project-6"> Project-6
+						
+						</div>
+					</div>
+					
+					
+					<div class= "row p-2">
+						<div class = "col-4"></div>
+						<div class = "col-6">
+							<input type = "submit" Value = "Update" class = "btn btn-success btn-lg"><!-- POJO sanga milnu paryo dpt_name -->	
+						</div>
+					</div>
+					
+					<input type = "hidden" th:field = "*{id}">
+					<input type = "hidden" th:field = "*{address.id}">
+					
+					</form>
+					
+					</div>
+				
+				<div class ="card-footer bg-warning text-center">copyright@2024</div>
+			</div>
+	
+	</div>
+
+
+
+</body>
+</html>
